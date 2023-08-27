@@ -33,7 +33,7 @@ public class Produto implements Serializable {
 	@Column(columnDefinition = "text", length = 2000, nullable = false)
 	private String descricao;
 
-	/** Nota item nota produto - ASSOCIAR **/
+	/** Nota item nota produto -           ASSOCIAR           **/
 
 	@Column(nullable = false)
 	private Double peso; /* 1000.55 G */
