@@ -1,6 +1,5 @@
 package jdev.sistema.loja.virtual.model;
 
-
 import java.io.Serializable;
 
 import javax.persistence.Column;

@@ -104,5 +104,4 @@ public abstract class Pessoa implements Serializable {
 			return false;
 		return true;
 	}
-
 }
