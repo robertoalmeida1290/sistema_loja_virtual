@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>jdev.mentoria.lojavirtual</groupId>
-	<artifactId>loja_virtual_mentoria</artifactId>
+	<groupId>jdev.sistema.loja.virtual</groupId>
+	<artifactId>sistema_loja_virtual</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>loja_virtual_mentoria</name>
+	<name>sistma_loja_virtual</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
