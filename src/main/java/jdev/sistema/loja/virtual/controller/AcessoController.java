@@ -33,7 +33,7 @@ public class AcessoController {
 	}
 	
 	
-	@ResponseBody /*Poder dar um retorno da API*/
+	@ResponseBody /*Pode dar um retorno da API*/
 	@PostMapping(value = "**/deleteAcesso") /*Mapeando a url para receber JSON*/
 	public ResponseEntity<?> deleteAcesso(@RequestBody Acesso acesso) { /*Recebe o JSON e converte pra Objeto*/
 		
