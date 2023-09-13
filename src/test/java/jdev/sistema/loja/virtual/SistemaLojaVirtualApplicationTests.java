@@ -31,7 +31,7 @@ public class SistemaLojaVirtualApplicationTests {
 	 public void testCadastroAcesso() {
 		
 		Acesso acesso = new Acesso();
-		acesso.setDescricao("teste de acesso service domingo");
+		acesso.setDescricao("teste de acesso service 12092023");
 		
 
 		acessoService.save(acesso);
@@ -40,7 +40,7 @@ public class SistemaLojaVirtualApplicationTests {
 	 public void testCadastroAcesso2() {
 		
 		Acesso acesso = new Acesso();
-		acesso.setDescricao("teste de acesso controller domingo ");
+		acesso.setDescricao("teste de acesso controller 12092023 ");
 		
 
 		acessoController.salvarAcesso(acesso);
