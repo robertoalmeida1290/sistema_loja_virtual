@@ -23,7 +23,7 @@ import jdev.sistema.loja.virtual.model.Acesso;
 import jdev.sistema.loja.virtual.repository.AcessoRepository;
 import junit.framework.TestCase;
 
-@Profile("teste")
+@Profile("test")
 @SpringBootTest(classes = SistemaLojaVirtualApplication.class)
 public class SistemaLojaVirtualApplicationTests extends TestCase {
 	

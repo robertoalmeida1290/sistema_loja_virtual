@@ -1,4 +1,5 @@
 package jdev.sistema.loja.virtual.model;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -111,4 +112,5 @@ public class Usuario implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
 }
