@@ -207,6 +207,8 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 	}
 	
 	
+
+	
 	@Test
 	public void testCadastraAcesso() {
 		
