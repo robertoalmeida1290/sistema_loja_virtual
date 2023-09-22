@@ -83,4 +83,6 @@ public class AcessoController {
 		
 		return new ResponseEntity<List<Acesso>>(acesso,HttpStatus.OK);
 	}
+		
+
 }
