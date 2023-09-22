@@ -22,6 +22,19 @@ import jdev.sistema.loja.virtual.model.dto.ObjetoErroDTO;
 @ControllerAdvice
 public class ControleExcecoes extends ResponseEntityExceptionHandler {
 	
+	@ExceptionHandler(ExceptionSistemaJava.class)
+	public ResponseEntity<Object> handleExceptionCustom (ExceptionSistemaJava ex) {
+		
+		ObjetoErroDTO objetoErroDTO = new ObjetoErroDTO();
+		
+		objetoErroDTO.setError(ex.getMessage());
+		objetoErroDTO.setCode(HttpStatus.OK.toString());
+		
+		return new ResponseEntity<Object>(objetoErroDTO, HttpStatus.OK);
+	}
+	
+	
+	
 	/*Captura execeçoes do projeto*/
 	@ExceptionHandler({Exception.class, RuntimeException.class, Throwable.class})
 	@Override

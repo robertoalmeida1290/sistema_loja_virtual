@@ -23,7 +23,7 @@ import jdev.sistema.loja.virtual.model.Acesso;
 import jdev.sistema.loja.virtual.repository.AcessoRepository;
 import junit.framework.TestCase;
 
-@Profile("teste")
+@Profile("test")
 @SpringBootTest(classes = SistemaLojaVirtualApplication.class)
 public class SistemaLojaVirtualApplicationTests extends TestCase {
 	
@@ -207,10 +207,8 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 	}
 	
 	
-
-	
 	@Test
-	public void testCadastraAcesso() {
+	public void testCadastraAcesso() throws ExceptionSistemaJava {
 		
 		Acesso acesso = new Acesso();
 		
@@ -257,8 +255,7 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 		assertEquals(1, acessos.size());
 		
 		acessoRepository.deleteById(acesso.getId());
-		
-		
+			
 		
 	}
 
