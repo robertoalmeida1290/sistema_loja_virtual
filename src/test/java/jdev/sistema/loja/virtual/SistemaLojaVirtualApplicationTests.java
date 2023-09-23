@@ -1,5 +1,6 @@
 package jdev.sistema.loja.virtual;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -47,7 +48,7 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 	    
 	    Acesso acesso = new Acesso();
 	    
-	    acesso.setDescricao("ROLE_COMPRADOR");
+	    acesso.setDescricao("ROLE_COMPRADOR" + Calendar.getInstance().getTimeInMillis());
 	    
 	    ObjectMapper objectMapper = new ObjectMapper();
 	    
@@ -168,7 +169,6 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 	}
 	
 	
-	
 	@Test
 	public void testRestApiObterAcessoDesc() throws JsonProcessingException, Exception {
 		
@@ -177,7 +177,7 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 	    
 	    Acesso acesso = new Acesso();
 	    
-	    acesso.setDescricao("ROLE_TESTE_OBTER_LIST");
+	    acesso.setDescricao("ROLE_TESTE_OBTER_LIST2");
 	    
 	    acesso = acessoRepository.save(acesso);
 	    
@@ -210,9 +210,11 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 	@Test
 	public void testCadastraAcesso() throws ExceptionSistemaJava {
 		
+		String descacesso = "ROLE_ADMIN" + Calendar.getInstance().getTimeInMillis();
+		
 		Acesso acesso = new Acesso();
 		
-		acesso.setDescricao("ROLE_ADMIN");
+		acesso.setDescricao(descacesso);
 		
 		assertEquals(true, acesso.getId() == null);
 
@@ -222,7 +224,7 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 		assertEquals(true, acesso.getId() > 0);
 		
 		/*Validar dados salvos da forma correta*/
-		assertEquals("ROLE_ADMIN", acesso.getDescricao());
+		assertEquals(descacesso, acesso.getDescricao());
 		
 		/*Teste de carregamento*/
 		
@@ -255,7 +257,8 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 		assertEquals(1, acessos.size());
 		
 		acessoRepository.deleteById(acesso.getId());
-			
+		
+		
 		
 	}
 
