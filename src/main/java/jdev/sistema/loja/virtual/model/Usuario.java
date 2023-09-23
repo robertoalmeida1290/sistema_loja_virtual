@@ -1,6 +1,5 @@
 package jdev.sistema.loja.virtual.model;
 
-
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
