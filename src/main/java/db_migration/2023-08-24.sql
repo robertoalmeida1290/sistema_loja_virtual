@@ -8,3 +8,10 @@ banco
 
 ***** CRIA UMA CONSTRAINT
 alter TABLE usuario add CONsTRAINT login_unique unique (login)
+
+************Para oganizar *****
+Ctrl Chift O
+Ctrl Chift f
+
+********** trocar o nome
+chift alt r

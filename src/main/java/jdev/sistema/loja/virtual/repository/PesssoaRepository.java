@@ -1,18 +1,21 @@
 package jdev.sistema.loja.virtual.repository;
 
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import jdev.sistema.loja.virtual.model.PessoaFisica;
 import jdev.sistema.loja.virtual.model.PessoaJuridica;
 
 @Repository
 public interface PesssoaRepository extends CrudRepository<PessoaJuridica, Long> {
 	
-	
 	@Query(value = "select pj from PessoaJuridica pj where pj.cnpj = ?1")
 	public PessoaJuridica existeCnpjCadastrado(String cnpj);
+	
+	
+	@Query(value = "select pf from PessoaFisica pf where pf.cpf = ?1")
+	public PessoaFisica existeCpfCadastrado(String cpf);
 	
 	
 	@Query(value = "select pj from PessoaJuridica pj where pj.inscEstadual = ?1")
