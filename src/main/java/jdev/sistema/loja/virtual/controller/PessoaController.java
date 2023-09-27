@@ -1,5 +1,7 @@
 package jdev.sistema.loja.virtual.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jdev.sistema.loja.virtual.ExceptionSistemaJava;
+import jdev.sistema.loja.virtual.enums.TipoPessoa;
 import jdev.sistema.loja.virtual.model.Endereco;
 import jdev.sistema.loja.virtual.model.PessoaFisica;
 import jdev.sistema.loja.virtual.model.PessoaJuridica;
 import jdev.sistema.loja.virtual.model.dto.CepDTO;
+import jdev.sistema.loja.virtual.model.dto.ConsultaCnpjDto;
 import jdev.sistema.loja.virtual.repository.EnderecoRepository;
+import jdev.sistema.loja.virtual.repository.PesssoaFisicaRepository;
 import jdev.sistema.loja.virtual.repository.PesssoaRepository;
 import jdev.sistema.loja.virtual.service.PessoaUserService;
+import jdev.sistema.loja.virtual.service.ServiceContagemAcessoApi;
 import jdev.sistema.loja.virtual.util.ValidaCNPJ;
 import jdev.sistema.loja.virtual.util.ValidaCPF;
 
@@ -35,11 +41,72 @@ public class PessoaController {
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
+	@Autowired
+	private PesssoaFisicaRepository pesssoaFisicaRepository;
+	
+	@Autowired
+	private ServiceContagemAcessoApi serviceContagemAcessoApi;
+	
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaPfNome/{nome}")
+	public ResponseEntity<List<PessoaFisica>> consultaPfNome(@PathVariable("nome") String nome) {
+		
+		List<PessoaFisica> fisicas = pesssoaFisicaRepository.pesquisaPorNomePF(nome.trim().toUpperCase());
+		
+		serviceContagemAcessoApi.atualizaAcessoEndPointPF();
+		
+		return new ResponseEntity<List<PessoaFisica>>(fisicas, HttpStatus.OK);
+	}
+	
+	
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaPfCpf/{cpf}")
+	public ResponseEntity<List<PessoaFisica>> consultaPfCpf(@PathVariable("cpf") String cpf) {
+		
+		List<PessoaFisica> fisicas = pesssoaFisicaRepository.pesquisaPorCpfPF(cpf);
+		
+		return new ResponseEntity<List<PessoaFisica>>(fisicas, HttpStatus.OK);
+	}
+	
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaNomePJ/{nome}")
+	public ResponseEntity<List<PessoaJuridica>> consultaNomePJ(@PathVariable("nome") String nome) {
+		
+		List<PessoaJuridica> fisicas = pesssoaRepository.pesquisaPorNomePJ(nome.trim().toUpperCase());
+		
+		return new ResponseEntity<List<PessoaJuridica>>(fisicas, HttpStatus.OK);
+	}
+	
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaCnpjPJ/{cnpj}")
+	public ResponseEntity<List<PessoaJuridica>> consultaCnpjPJ(@PathVariable("cnpj") String cnpj) {
+		
+		List<PessoaJuridica> fisicas = pesssoaRepository.existeCnpjCadastradoList(cnpj.trim().toUpperCase());
+		
+		return new ResponseEntity<List<PessoaJuridica>>(fisicas, HttpStatus.OK);
+	}
+	
+	
+	
 	@ResponseBody
 	@GetMapping(value = "**/consultaCep/{cep}")
 	public ResponseEntity<CepDTO> consultaCep(@PathVariable("cep") String cep){
 		
 	  return new ResponseEntity<CepDTO>(pessoaUserService.consultaCep(cep), HttpStatus.OK);
+		
+	}
+	
+	
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaCnpjReceitaWs/{cnpj}")
+	public ResponseEntity<ConsultaCnpjDto> consultaCnpjReceitaWs(@PathVariable("cnpj") String cnpj){
+		
+	  return new ResponseEntity<ConsultaCnpjDto>(pessoaUserService.consultaCnpjReceitaWS(cnpj), HttpStatus.OK);
 		
 	}
 	
@@ -55,6 +122,11 @@ public class PessoaController {
 		
 		if (pessoaJuridica == null) {
 			throw new ExceptionSistemaJava("Pessoa juridica nao pode ser NULL");
+		}
+		
+		
+		if (pessoaJuridica.getTipoPessoa() == null) {
+			throw new ExceptionSistemaJava("Informe o tipo Jurídico ou Fornecedor da Loja");
 		}
 		
 		if (pessoaJuridica.getId() == null && pesssoaRepository.existeCnpjCadastrado(pessoaJuridica.getCnpj()) != null) {
@@ -119,6 +191,10 @@ public class PessoaController {
 		
 		if (pessoaFisica == null) {
 			throw new ExceptionSistemaJava("Pessoa fisica não pode ser NULL");
+		}
+		
+		if (pessoaFisica.getTipoPessoa() == null) {
+			pessoaFisica.setTipoPessoa(TipoPessoa.FISICA.name());
 		}
 		
 		if (pessoaFisica.getId() == null && pesssoaRepository.existeCpfCadastrado(pessoaFisica.getCpf()) != null) {

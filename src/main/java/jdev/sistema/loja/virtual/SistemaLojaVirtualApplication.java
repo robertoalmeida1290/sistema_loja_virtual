@@ -17,6 +17,7 @@ import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
@@ -25,11 +26,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EntityScan(basePackages = "jdev.sistema.loja.virtual.model")
 @ComponentScan(basePackages = {"jdev.*"})
 @EnableJpaRepositories(basePackages = {"jdev.sistema.loja.virtual.repository"})
-
 @EnableTransactionManagement
 public class SistemaLojaVirtualApplication implements AsyncConfigurer {
 
 	public static void main(String[] args) {
+		
+		System.out.println(new BCryptPasswordEncoder().encode("123"));
 		
 		
 		SpringApplication.run(SistemaLojaVirtualApplication.class, args);
