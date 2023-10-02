@@ -15,3 +15,7 @@ Ctrl Chift f
 
 ********** trocar o nome
 chift alt r
+
+****************
+1 º cadastra no repository
+2 º cadastra no controller

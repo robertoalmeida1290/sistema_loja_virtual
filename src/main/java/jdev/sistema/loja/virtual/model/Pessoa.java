@@ -1,6 +1,5 @@
 package jdev.sistema.loja.virtual.model;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -145,5 +144,4 @@ public abstract class Pessoa implements Serializable {
 			return false;
 		return true;
 	}
-
 }

@@ -1,6 +1,5 @@
 package jdev.sistema.loja.virtual.model;
 
-
 import java.util.Date;
 
 import javax.persistence.Column;
