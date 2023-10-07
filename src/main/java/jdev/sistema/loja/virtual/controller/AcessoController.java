@@ -84,7 +84,9 @@ public class AcessoController {
 		
 		return new ResponseEntity<Acesso>(acesso,HttpStatus.OK);
 	}
-		
+	
+	
+	
 	@ResponseBody
 	@GetMapping(value = "**/buscarPorDesc/{desc}")
 	public ResponseEntity<List<Acesso>> buscarPorDesc(@PathVariable("desc") String desc) { 
@@ -95,3 +97,4 @@ public class AcessoController {
 	}
 
 }
+

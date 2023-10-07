@@ -1,4 +1,5 @@
 package jdev.sistema.loja.virtual.repository;
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,3 +17,4 @@ public interface AcessoRepository extends JpaRepository<Acesso, Long> {
 	List<Acesso> buscarAcessoDesc(String desc);
 
 }
+
