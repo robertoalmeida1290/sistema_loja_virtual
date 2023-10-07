@@ -1,6 +1,5 @@
 package jdev.sistema.loja.virtual.model.dto;
 
-
 import java.io.Serializable;
 
 public class CatgoriaProdutoDto implements Serializable {
@@ -36,4 +35,5 @@ public class CatgoriaProdutoDto implements Serializable {
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
 	}
+
 }
