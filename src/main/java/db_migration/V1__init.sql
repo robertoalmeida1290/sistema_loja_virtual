@@ -17,10 +17,10 @@ SET row_security = off;
 
 --
 -- TOC entry 2344 (class 1262 OID 17479)
--- Name: loja_virtual_mentoria_teste; Type: DATABASE; Schema: -; Owner: postgres
+-- Name: sistema_loja_virtual; Type: DATABASE; Schema: -; Owner: postgres
 --
 
--- CREATE DATABASE loja_virtual_mentoria_teste WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Portuguese_Brazil.1252' LC_CTYPE = 'Portuguese_Brazil.1252';
+-- CREATE DATABASE sistema_loja_virtual WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Portuguese_Brazil.1252' LC_CTYPE = 'Portuguese_Brazil.1252';
 
 
 ALTER DATABASE sistema_loja_virtual_teste OWNER TO postgres;
