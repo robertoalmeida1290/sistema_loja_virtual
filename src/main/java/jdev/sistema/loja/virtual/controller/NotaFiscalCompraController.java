@@ -1,6 +1,7 @@
 package jdev.sistema.loja.virtual.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,8 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import jdev.sistema.loja.virtual.ExceptionSistemaJava;
 import jdev.sistema.loja.virtual.model.NotaFiscalCompra;
 import jdev.sistema.loja.virtual.model.NotaFiscalVenda;
+import jdev.sistema.loja.virtual.model.dto.ObejtoRequisicaoRelatorioProdCompraNotaFiscalDTO;
+import jdev.sistema.loja.virtual.model.dto.ObejtoRequisicaoRelatorioProdutoAlertaEstoque;
+import jdev.sistema.loja.virtual.model.dto.ObjetoRelatorioStatusCompra;
 import jdev.sistema.loja.virtual.repository.NotaFiscalCompraRepository;
 import jdev.sistema.loja.virtual.repository.NotaFiscalVendaRepository;
+import jdev.sistema.loja.virtual.service.NotaFiscalCompraService;
 
 @RestController
 public class NotaFiscalCompraController {
@@ -30,6 +35,56 @@ public class NotaFiscalCompraController {
 	
 	@Autowired
 	private NotaFiscalVendaRepository notaFiscalVendaRepository;
+	
+	@Autowired
+	private NotaFiscalCompraService notaFiscalCompraService;
+	
+	
+	@ResponseBody
+	@PostMapping(value = "**/relatorioStatusCompra")
+	public ResponseEntity<List<ObjetoRelatorioStatusCompra>> relatorioStatusCompra (@Valid 
+			             @RequestBody  ObjetoRelatorioStatusCompra objetoRelatorioStatusCompra){
+		
+		List<ObjetoRelatorioStatusCompra> retorno = new ArrayList<ObjetoRelatorioStatusCompra>();
+		
+		retorno = notaFiscalCompraService.relatorioStatusVendaLojaVirtual(objetoRelatorioStatusCompra);
+		
+		return new ResponseEntity<List<ObjetoRelatorioStatusCompra>>(retorno, HttpStatus.OK);
+		
+	}
+	
+	@ResponseBody
+	@PostMapping(value = "**/relatorioProdCompradoNotaFiscal")
+	public ResponseEntity<List<ObejtoRequisicaoRelatorioProdCompraNotaFiscalDTO>> relatorioProdCompradoNotaFiscal
+	    (@Valid @RequestBody ObejtoRequisicaoRelatorioProdCompraNotaFiscalDTO obejtoRequisicaoRelatorioProdCompraNotaFiscalDto){
+		
+		List<ObejtoRequisicaoRelatorioProdCompraNotaFiscalDTO> retorno = 
+				new ArrayList<ObejtoRequisicaoRelatorioProdCompraNotaFiscalDTO>();
+		
+		retorno = notaFiscalCompraService.gerarRelatorioProdCompraNota(obejtoRequisicaoRelatorioProdCompraNotaFiscalDto);
+		
+		
+		return new ResponseEntity<List<ObejtoRequisicaoRelatorioProdCompraNotaFiscalDTO>>(retorno, HttpStatus.OK);
+		
+	}
+	
+	
+	
+	@ResponseBody
+	@PostMapping(value = "**/relatorioProdAlertaEstoque")
+	public ResponseEntity<List<ObejtoRequisicaoRelatorioProdutoAlertaEstoque>> relatorioProdAlertaEstoque
+	    (@Valid @RequestBody ObejtoRequisicaoRelatorioProdutoAlertaEstoque obejtoRequisicaoRelatorioProdCompraNotaFiscalDto ){
+		
+		List<ObejtoRequisicaoRelatorioProdutoAlertaEstoque> retorno = 
+				new ArrayList<ObejtoRequisicaoRelatorioProdutoAlertaEstoque>();
+		
+		retorno = notaFiscalCompraService.gerarRelatorioAlertaEstoque(obejtoRequisicaoRelatorioProdCompraNotaFiscalDto);
+		
+		
+		return new ResponseEntity<List<ObejtoRequisicaoRelatorioProdutoAlertaEstoque>>(retorno, HttpStatus.OK);
+		
+	}
+	
 	
 	
 	
@@ -95,6 +150,8 @@ public class NotaFiscalCompraController {
 		
 		return new ResponseEntity<NotaFiscalCompra>(notaFiscalCompra, HttpStatus.OK);
 	}
+	
+	
 	
 	
 	@ResponseBody

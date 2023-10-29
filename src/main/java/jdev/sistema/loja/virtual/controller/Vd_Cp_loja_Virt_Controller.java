@@ -388,7 +388,6 @@ public class Vd_Cp_loja_Virt_Controller {
 	}
 	
 	
-	
 	@ResponseBody
 	@GetMapping(value = "**/consultaVendaPorProdutoId/{id}")
 	public ResponseEntity<List<VendaCompraLojaVirtualDTO>> consultaVendaPorProduto(@PathVariable("id") Long idProd) {
