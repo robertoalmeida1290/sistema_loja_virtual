@@ -55,8 +55,7 @@ public class ServiceSendEmail {
 		message.setContent(menssagem, "text/html; charset=utf-8");
 		
 		Transport.send(message);
-		
-		
+				
 	}
 
 }

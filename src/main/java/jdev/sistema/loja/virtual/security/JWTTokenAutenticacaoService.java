@@ -19,7 +19,6 @@ import jdev.sistema.loja.virtual.ApplicationContextLoad;
 import jdev.sistema.loja.virtual.model.Usuario;
 import jdev.sistema.loja.virtual.repository.UsuarioRepository;
 
-
 /*Criar a autenticação e retonar também a autenticação JWT*/
 @Service
 @Component
@@ -131,6 +130,4 @@ public class JWTTokenAutenticacaoService {
 		
 	}
 	
-	
-
 }

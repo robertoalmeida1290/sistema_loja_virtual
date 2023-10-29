@@ -6,8 +6,7 @@ public enum StatusContaReceber {
 	VENCIDA("Vencida"),
 	ABERTA("Aberta"),
 	QUITADA("Quitada");
-	
-	
+		
 	private String descricao;
 	
 	private StatusContaReceber(String descricao) {

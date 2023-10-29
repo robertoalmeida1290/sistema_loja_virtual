@@ -40,6 +40,4 @@ public class JwtApiAutenticacaoFilter extends GenericFilterBean {
 		
 	}
 	
-	
-
 }

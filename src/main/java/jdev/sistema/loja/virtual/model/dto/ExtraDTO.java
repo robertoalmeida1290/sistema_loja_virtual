@@ -1,5 +1,6 @@
 package jdev.sistema.loja.virtual.model.dto;
 
+
 import java.io.Serializable;
 
 public class ExtraDTO  implements Serializable{

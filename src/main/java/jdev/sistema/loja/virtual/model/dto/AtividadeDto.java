@@ -28,5 +28,4 @@ public class AtividadeDto implements Serializable {
 	public void setCode(String code) {
 		this.code = code;
 	}
-
 }

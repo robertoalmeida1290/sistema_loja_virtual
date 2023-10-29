@@ -211,5 +211,4 @@ public class PessoaController {
 		return new ResponseEntity<PessoaFisica>(pessoaFisica, HttpStatus.OK);
 	}
 
-
 }

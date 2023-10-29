@@ -169,6 +169,7 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 	}
 	
 	
+	
 	@Test
 	public void testRestApiObterAcessoDesc() throws JsonProcessingException, Exception {
 		
@@ -177,7 +178,7 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 	    
 	    Acesso acesso = new Acesso();
 	    
-	    acesso.setDescricao("ROLE_TESTE_OBTER_LIST2");
+	    acesso.setDescricao("ROLE_TESTE_OBTER_LIST");
 	    
 	    acesso = acessoRepository.save(acesso);
 	    
@@ -257,8 +258,7 @@ public class SistemaLojaVirtualApplicationTests extends TestCase {
 		assertEquals(1, acessos.size());
 		
 		acessoRepository.deleteById(acesso.getId());
-		
-		
+				
 		
 	}
 

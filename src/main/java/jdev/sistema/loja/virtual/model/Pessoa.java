@@ -62,7 +62,6 @@ public abstract class Pessoa implements Serializable {
 	
 	
 	
-	
 	public Pessoa getEmpresa() {
 		return empresa;
 	}

@@ -25,5 +25,4 @@ public class BillingDTO implements Serializable {
 	public void setDatabase(boolean database) {
 		this.database = database;
 	}
-
 }

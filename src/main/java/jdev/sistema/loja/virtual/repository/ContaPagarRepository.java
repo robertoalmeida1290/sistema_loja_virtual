@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jdev.sistema.loja.virtual.model.ContaPagar;
 
-
-
 @Repository
 @Transactional
 public interface ContaPagarRepository extends JpaRepository<ContaPagar, Long> {

@@ -33,9 +33,7 @@ public class CategoriaProdutController {
 		
 		return new ResponseEntity<List<CategoriaProduto>>(acesso,HttpStatus.OK);
 	}
-	
-	
-	
+		
 	
 	@ResponseBody /*Poder dar um retorno da API*/
 	@PostMapping(value = "**/deleteCategoria") /*Mapeando a url para receber JSON*/

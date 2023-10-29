@@ -29,13 +29,13 @@ public class MarcaProdutoController {
 	private MarcaRepository marcaRepository;
 	
 	@ResponseBody 
-	@PostMapping(value = "**/salvarMarca") 
-	public ResponseEntity<MarcaProduto> salvarMarca(@RequestBody @Valid MarcaProduto marcaProduto) throws ExceptionSistemaJava { /*Recebe o JSON e converte pra Objeto*/
+	@PostMapping(value = "**/salvarMarca")
+	public ResponseEntity<MarcaProduto> salvarMarca(@RequestBody @Valid MarcaProduto marcaProduto ) throws ExceptionSistemaJava { /*Recebe o JSON e converte pra Objeto*/
 		
 		if (marcaProduto.getId() == null) {
-		  List<MarcaProduto> acessos = marcaRepository.buscarMarcaDesc(marcaProduto.getNomeDesc().toUpperCase());
+		  List<MarcaProduto> marcaProdutos  = marcaRepository.buscarMarcaDesc(marcaProduto.getNomeDesc().toUpperCase());
 		  
-		  if (!acessos.isEmpty()) {
+		  if (!marcaProdutos.isEmpty()) {
 			  throw new ExceptionSistemaJava("Já existe Marca com a descrição: " + marcaProduto.getNomeDesc());
 		  }
 		}
@@ -50,45 +50,49 @@ public class MarcaProdutoController {
 	
 	@ResponseBody /*Poder dar um retorno da API*/
 	@PostMapping(value = "**/deleteMarca") /*Mapeando a url para receber JSON*/
-	public ResponseEntity<String> deleteMarca(@RequestBody MarcaProduto marcaProduto) { /*Recebe o JSON e converte pra Objeto*/
+	public ResponseEntity<?> deleteMarca(@RequestBody MarcaProduto marcaProduto) { /*Recebe o JSON e converte pra Objeto*/
 		
 		marcaRepository.deleteById(marcaProduto.getId());
 		
-		return new ResponseEntity<String>("Marca Removida",HttpStatus.OK);
+		return new ResponseEntity("Marca produto Removido",HttpStatus.OK);
 	}
 	
 
+	//@Secured({ "ROLE_GERENTE", "ROLE_ADMIN" })
 	@ResponseBody
 	@DeleteMapping(value = "**/deleteMarcaPorId/{id}")
-	public ResponseEntity<String> deleteMarcaPorId(@PathVariable("id") Long id) { 
+	public ResponseEntity<?> deleteMarcaPorId(@PathVariable("id") Long id) { 
 		
 		marcaRepository.deleteById(id);
 		
-		return new ResponseEntity<String>("Marca Removid",HttpStatus.OK);
+		return new ResponseEntity("Marca Produto Removido",HttpStatus.OK);
 	}
 	
 	
 	
 	@ResponseBody
-	@GetMapping(value = "**/obterMarca/{id}")
-	public ResponseEntity<MarcaProduto> obterMarca(@PathVariable("id") Long id) throws ExceptionSistemaJava { 
+	@GetMapping(value = "**/obterMarcaProduto/{id}")
+	public ResponseEntity<MarcaProduto> obterMarcaProduto(@PathVariable("id") Long id) throws ExceptionSistemaJava { 
 		
 		MarcaProduto marcaProduto = marcaRepository.findById(id).orElse(null);
 		
 		if (marcaProduto == null) {
-			throw new ExceptionSistemaJava("Não encontrou a Marca com código: " + id);
+			throw new ExceptionSistemaJava("Não encontrou Marca Produto com código: " + id);
 		}
 		
 		return new ResponseEntity<MarcaProduto>(marcaProduto,HttpStatus.OK);
 	}
 	
+	
+	
 	@ResponseBody
-	@GetMapping(value = "**/buscarMarcaPorDesc/{desc}")
-	public ResponseEntity<List<MarcaProduto>> buscarMarcaPorDesc(@PathVariable("desc") String desc) { 
+	@GetMapping(value = "**/buscarMarcaProdutoPorDesc/{desc}")
+	public ResponseEntity<List<MarcaProduto>> buscarMarcaProdutoPorDesc(@PathVariable("desc") String desc) { 
 		
-		List<MarcaProduto> acesso = marcaRepository.buscarMarcaDesc(desc.toUpperCase());
+		List<MarcaProduto>  marcaProdutos = marcaRepository.buscarMarcaDesc(desc.toUpperCase().trim());
 		
-		return new ResponseEntity<List<MarcaProduto>>(acesso,HttpStatus.OK);
+		return new ResponseEntity<List<MarcaProduto>>(marcaProdutos,HttpStatus.OK);
 	}
 	
+
 }

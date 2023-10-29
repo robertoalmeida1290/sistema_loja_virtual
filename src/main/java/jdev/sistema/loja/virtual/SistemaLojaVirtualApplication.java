@@ -37,8 +37,7 @@ public class SistemaLojaVirtualApplication implements AsyncConfigurer {
 		SpringApplication.run(SistemaLojaVirtualApplication.class, args);
 	}
 	
-	
-	
+		
 	@Override
 	@Bean
 	public Executor getAsyncExecutor() {

@@ -83,5 +83,4 @@ public class CategoriaProduto implements Serializable {
 			return false;
 		return true;
 	}
-
 }

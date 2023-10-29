@@ -14,7 +14,9 @@ public class AcessoService {
 	
 	
 	public Acesso save(Acesso acesso) {
-		/*aqui pode fazer qualquer tipo de validacao.. antes de salvar,,  */
+		
+		/*Qualquer tipo de validação*/
+		
 		return acessoRepository.save(acesso);
 	}
 

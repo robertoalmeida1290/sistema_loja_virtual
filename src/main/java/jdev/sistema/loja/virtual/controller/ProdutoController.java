@@ -1,6 +1,5 @@
 package jdev.sistema.loja.virtual.controller;
 
-
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -39,6 +38,7 @@ public class ProdutoController {
 	
 	@Autowired
 	private ServiceSendEmail serviceSendEmail; 
+	
 	
 	@ResponseBody /*Poder dar um retorno da API*/
 	@PostMapping(value = "**/salvarProduto") /*Mapeando a url para receber JSON*/
@@ -210,8 +210,5 @@ public class ProdutoController {
 		
 		return new ResponseEntity<List<Produto>>(acesso,HttpStatus.OK);
 	}
-	
-	
-	
-
+		
 }

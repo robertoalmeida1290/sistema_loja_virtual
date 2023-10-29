@@ -1,5 +1,6 @@
 package jdev.sistema.loja.virtual;
 
+
 import jdev.sistema.loja.virtual.util.ValidaCNPJ;
 import jdev.sistema.loja.virtual.util.ValidaCPF;
 

@@ -79,8 +79,6 @@ public class ContaPagarController {
 		return new ResponseEntity<String>("Conta Pagar Removida",HttpStatus.OK);
 	}
 	
-	
-	
 	@ResponseBody
 	@GetMapping(value = "**/obterContaPagar/{id}")
 	public ResponseEntity<ContaPagar> obterContaPagar(@PathVariable("id") Long id) throws ExceptionSistemaJava { 
@@ -105,7 +103,4 @@ public class ContaPagarController {
 		return new ResponseEntity<List<ContaPagar>>(contaPagar,HttpStatus.OK);
 	}
 	
-	
-	
-
 }

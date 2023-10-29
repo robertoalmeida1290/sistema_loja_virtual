@@ -4,7 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.mail.MessagingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -38,13 +37,12 @@ public class TarefaAutomatizadaService {
 			msg.append("Está na hora de trocar sua senha, já passou 90 dias de validade.").append("<br/>");
 			msg.append("Troque sua senha a loja virtual do Alex - JDEV treinamento");
 			
-			serviceSendEmail.enviarEmailHtml("Por favor troca de senha", msg.toString(), usuario.getLogin());
+			serviceSendEmail.enviarEmailHtml("Troca de senha", msg.toString(), usuario.getLogin());
 			
 			Thread.sleep(3000);
 			
 		}
-		
-		
+				
 	}
 
 }

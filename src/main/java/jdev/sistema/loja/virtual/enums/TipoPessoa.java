@@ -1,4 +1,5 @@
 package jdev.sistema.loja.virtual.enums;
+
 public enum TipoPessoa {
 	
 	JURIDICA("Jurídica"),

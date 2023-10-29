@@ -5,8 +5,7 @@ import java.util.InputMismatchException;
 public class ValidaCNPJ {
 
 	public static boolean isCNPJ(String CNPJ) {
-		
-		
+				
 		CNPJ = CNPJ.replaceAll("\\.", "").replaceAll("\\/", "").replaceAll("\\-", ""); 
 		
 		// considera-se erro CNPJ's formados por uma sequencia de numeros iguais

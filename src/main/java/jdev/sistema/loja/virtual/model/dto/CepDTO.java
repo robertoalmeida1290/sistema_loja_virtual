@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class CepDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	private String cep;
 	private String logradouro;
 	private String complemento;
